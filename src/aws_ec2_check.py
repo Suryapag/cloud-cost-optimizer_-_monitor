@@ -1,7 +1,8 @@
 import boto3
 import os
 from dotenv import load_dotenv
-
+# Load environment variables from .env file
+# Ensure you have a .env file with AWS_ACCESS_KEY and AWS_SECRET_KEY
 load_dotenv()
 
 def list_instances():
