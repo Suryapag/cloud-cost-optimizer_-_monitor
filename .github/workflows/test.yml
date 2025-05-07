@@ -24,7 +24,7 @@ jobs:
         run: git clone https://github.com/Suryapag/cloud-cost-optimizer_-_monitor.git
 
       - name: Install Requirements
-        run: pip install -r requirements.txt
+        run: pip install -r cloud-cost-optimizer_-_monitor/requirements.txt
 
       - name: Run Pytest
         run: python tests/test_email_send.py
