@@ -11,6 +11,9 @@ jobs:
       EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
       EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
       EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
 
     steps:
       - name: Checkout Repository
@@ -38,8 +41,3 @@ jobs:
       - name: Run EC2 Instance Check
         run: python src/aws_ec2_check.py
         working-directory: cloud-cost-optimizer_-_monitor
-      - name: Debug ENV values
-        run: |
-          echo "EMAIL_HOST=$EMAIL_HOST"
-          echo "EMAIL_PORT=$EMAIL_PORT"
-          echo "EMAIL_HOST_USER=$EMAIL_HOST_USER"
