@@ -3,7 +3,10 @@ import os
 from email.mime.text import MIMEText
 from dotenv import load_dotenv
 
-load_dotenv()
+# Only use dotenv locally
+if os.getenv("GITHUB_ACTIONS") != "true":
+    from dotenv import load_dotenv
+    load_dotenv()
 
 def send_error_email(subject, body):
     msg = MIMEText(body)
