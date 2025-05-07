@@ -27,8 +27,14 @@ jobs:
         run: pip install -r cloud-cost-optimizer_-_monitor/requirements.txt
 
       - name: Run Pytest
-        run: src/aws_ec2_check.py
+        run: python tests/test_email_send.py
         working-directory: cloud-cost-optimizer_-_monitor
+        
+      - name: Debug ENV values
+        run: |
+          echo "EMAIL_HOST=$EMAIL_HOST"
+          echo "EMAIL_PORT=$EMAIL_PORT"
+          echo "EMAIL_HOST_USER=$EMAIL_HOST_USER"
         env:
           EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
           EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
