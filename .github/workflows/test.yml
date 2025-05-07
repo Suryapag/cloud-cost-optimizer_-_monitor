@@ -1,17 +1,33 @@
 name: Python Tests
+
 on: [push]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-            python-version: '3.8'
-      - run: git config --global user.name "Suryapag"
-      - run: git config --global user.email "suryapa9092@gmail.com"
-      - run: git clone https://github.com/Suryapag/cloud-cost-optimizer_-_monitor.git
+          python-version: '3.8'
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "Suryapag"
+          git config --global user.email "suryapa9092@gmail.com"
+
+      - name: Clone Test Repository
+        run: git clone https://github.com/Suryapag/cloud-cost-optimizer_-_monitor.git
+
+      - name: Install Requirements
+        run: pip install -r cloud-cost-optimizer_-_monitor/requirements.txt
+
+      - name: Run Pytest
+        run: python -m pytest tests/test_email_send.py
         working-directory: cloud-cost-optimizer_-_monitor
         env:
           EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
@@ -19,5 +35,6 @@ jobs:
           EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
           EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
           EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
+
       - run: pip install -r requirements.txt
       - run: python -m pytest tests/test_email_send.py
