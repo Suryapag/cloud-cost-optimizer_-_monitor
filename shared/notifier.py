@@ -8,7 +8,18 @@ if os.getenv("GITHUB_ACTIONS") != "true":
     from dotenv import load_dotenv
     load_dotenv()
 
+
+
 def send_error_email(subject, body):
+
+    if isinstance(body, list):
+        body = "\n\n".join([
+            "\n".join([f"{k}: {v}" for k, v in item.items()])
+            for item in body
+        ])
+    else:
+        body = str(body)
+        
     msg = MIMEText(body)
     msg['Subject'] = subject
     msg['From'] = os.getenv("EMAIL_HOST_USER")

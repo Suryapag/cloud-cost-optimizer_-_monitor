@@ -35,7 +35,9 @@ jobs:
       - name: Run Pytest
         run: python tests/test_email_send.py
         working-directory: cloud-cost-optimizer_-_monitor
-        
+      - name: Run EC2 Instance Check
+        run: python src/aws_ec2_check.py
+        working-directory: cloud-cost-optimizer_-_monitor
       - name: Debug ENV values
         run: |
           echo "EMAIL_HOST=$EMAIL_HOST"
