@@ -11,7 +11,7 @@ jobs:
             python-version: '3.8'
       - run: git config --global user.name "Suryapag"
       - run: git config --global user.email "suryapa9092@gmail.com"
-      - run: git clone git@github.com:Suryapag/cloud-cost-optimizer_-_monitor.git
+      - run: git clone https://github.com/Suryapag/cloud-cost-optimizer_-_monitor.git
         working-directory: cloud-cost-optimizer_-_monitor
         env:
           EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
