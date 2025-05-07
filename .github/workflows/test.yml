@@ -14,5 +14,11 @@ jobs:
       - run: git config --global user.email "suryapa9092@gmail.com"
       - run: git clone git@github.com:Suryapag/cloud-cost-optimizer_-_monitor.git
         working-directory: cloud-cost-optimizer_-_monitor
+        env:
+          EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+          EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+          EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+          EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+          EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
       - run: pip install -r requirements.txt
       - run: python -m pytest tests/test_email_send.py
