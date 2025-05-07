@@ -5,7 +5,7 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    env: 
+    env:  # 👈 Add env block at the job level
       EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
       EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
       EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
