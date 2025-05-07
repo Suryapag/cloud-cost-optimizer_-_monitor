@@ -24,10 +24,10 @@ jobs:
         run: git clone https://github.com/Suryapag/cloud-cost-optimizer_-_monitor.git
 
       - name: Install Requirements
-        run: pip install -r cloud-cost-optimizer_-_monitor/requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Run Pytest
-        run: python -m pytest tests/test_email_send.py
+        run: python tests/test_email_send.py
         working-directory: cloud-cost-optimizer_-_monitor
         env:
           EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
@@ -35,6 +35,3 @@ jobs:
           EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
           EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
           EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
-
-      - run: pip install -r requirements.txt
-      - run: python -m pytest tests/test_email_send.py
